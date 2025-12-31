@@ -35,4 +35,4 @@ cargo +nightly espflash flash --target riscv32imac-esp-espidf --port /dev/cu.usb
 
 ## License
 
-MIT
+BSD-3-Clause

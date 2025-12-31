@@ -6,7 +6,7 @@ edition = "2021"
 resolver = "2"
 description = "Matter/Thread Christmas garland for ESP32-C6"
 repository = "https://github.com/lexfrei/matter-garland"
-license = "MIT"
+license = "BSD-3-Clause"
 build = "build.rs"
 rust-version = "1.84"
 
