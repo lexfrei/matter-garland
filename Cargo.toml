@@ -1,0 +1,47 @@
+[package]
+name = "matter-garland"
+version = "0.1.0"
+authors = ["Aleksei Sviridkin <f@lex.la>"]
+edition = "2021"
+resolver = "2"
+description = "Matter/Thread Christmas garland for ESP32-C6"
+repository = "https://github.com/lexfrei/matter-garland"
+license = "MIT"
+build = "build.rs"
+rust-version = "1.84"
+
+[patch.crates-io]
+rs-matter = { git = "https://github.com/sysgrok/rs-matter", branch = "next" }
+rs-matter-stack = { git = "https://github.com/sysgrok/rs-matter-stack", branch = "next" }
+esp-idf-svc = { git = "https://github.com/esp-rs/esp-idf-svc" }
+esp-idf-hal = { git = "https://github.com/esp-rs/esp-idf-hal" }
+esp-idf-sys = { git = "https://github.com/esp-rs/esp-idf-sys" }
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true
+opt-level = "z"
+
+[dependencies]
+esp-idf-matter = { git = "https://github.com/ivmarkov/esp-idf-matter", default-features = false, features = [
+    "std",
+    "async-io-mini",
+    "log",
+    "max-fabrics-2",
+] }
+esp-idf-svc = { version = "0.51", default-features = false, features = [
+    "std",
+    "alloc",
+    "binstart",
+    "critical-section",
+    "embassy-time-driver",
+    "experimental",
+] }
+log = { version = "0.4", default-features = false }
+static_cell = "2.1"
+anyhow = "1"
+
+[build-dependencies]
+embuild = "0.33"
